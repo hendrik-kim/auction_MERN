@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 const reviewSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -13,11 +12,6 @@ const reviewSchema = mongoose.Schema(
 
 const userSchema = mongoose.Schema(
   {
-    post: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'Post',
-    },
     name: {
       type: String,
       required: true,
@@ -27,19 +21,10 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
-    password: {
-      type: String,
-      required: true,
-    },
     kakaoId: {
       type: String,
       required: true,
       unique: true,
-    },
-    isAdmin: {
-      type: Boolean,
-      required: true,
-      default: false,
     },
     reviews: [reviewSchema],
     rating: {
@@ -51,6 +36,15 @@ const userSchema = mongoose.Schema(
       type: Number,
       required: true,
       default: 0,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    isAdmin: {
+      type: Boolean,
+      required: true,
+      default: false,
     },
   },
   {
