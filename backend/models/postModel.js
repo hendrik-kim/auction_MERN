@@ -2,20 +2,25 @@ import mongoose from 'mongoose';
 
 const postSchema = mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: 'User',
-    },
+    // user: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   required: true,
+    //   ref: 'User',
+    // },
     postItems: [
       {
-        name: { type: String, required: true },
-        qty: { type: Number, required: true },
-        image: { type: String, required: true },
-        price: { type: Number, required: true },
+        name: { type: String, required: false },
+        qty: { type: Number, required: false },
+        image: { type: String, required: false },
+        price: { type: Number, required: false },
         product: {
+          // name: { type: String, required: true },
+          // qty: { type: Number, required: true },
+          // image: { type: String, required: true },
+          // price: { type: Number, required: true },
+          // product: {
           type: mongoose.Schema.Types.ObjectId,
-          required: true,
+          // required: true,
           ref: 'Product',
         },
       },

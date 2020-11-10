@@ -5,6 +5,8 @@ import users from './data/users.js';
 import products from './data/products.js';
 import User from './models/userModel.js';
 import Product from './models/productModel.js';
+import Post from './models/postModel.js';
+import posts from './data/posts.js';
 import Order from './models/orderModel.js';
 import connectDB from './config/db.js';
 
@@ -16,9 +18,11 @@ const importData = async () => {
   try {
     await Order.deleteMany();
     await Product.deleteMany();
+    await Post.deleteMany();
     await User.deleteMany();
 
     const createdUsers = await User.insertMany(users);
+    const createdProducts = await Product.insertMany(products);
 
     const adminUser = createdUsers[0]._id;
 
@@ -26,7 +30,12 @@ const importData = async () => {
       return { ...product, user: adminUser };
     });
 
+    const samplePosts = posts.map((post) => {
+      return { ...post, createdProducts };
+    });
+
     await Product.insertMany(sampleProducts);
+    await Post.insertMany(samplePosts);
 
     console.log('Data Imported!'.green.inverse);
     process.exit();
