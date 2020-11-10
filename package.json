@@ -1,7 +1,7 @@
 {
-  "name": "market",
+  "name": "proshop",
   "version": "1.0.0",
-  "description": "",
+  "description": "MERN shopping cart app",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -12,25 +12,18 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hank-dohwankim/auction_mern.git"
-  },
-  "author": "Hank",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hank-dohwankim/auction_mern/issues"
-  },
-  "homepage": "https://github.com/hank-dohwankim/auction_mern#readme",
+  "author": "Brad Traversy",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.10.13"
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.10.6"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.4"
   }
 }

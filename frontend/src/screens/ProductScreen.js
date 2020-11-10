@@ -1,61 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
-import posts from '../data/posts.js';
-import ProductDetail from './../components/ProductDetail';
+import Rating from '../components/Rating';
+import axios from 'axios';
 
-const PostScreen = ({ match }) => {
-  const post = posts[0].products.find((p) => p._id === match.params.id);
-
-  // render different component by clicking button setState
-
+const ProductScreen = ({ match }) => {
   const [product, setProduct] = useState({});
 
-  const sendProductData = () => {
-    setProduct();
-  };
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`);
+
+      setProduct(data);
+    };
+
+    fetchProduct();
+  }, [match]);
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
+      <Link className="btn btn-dark my-3" to="/">
         Go Back
       </Link>
       <Row>
-        {/* Select one item in list, then render in other Col */}
-        <Col sm={12} md={6} lg={4} xl={3}>
-          {posts[0].products.map((product) => (
-            <Row key={product._id}>
-              <Image src={product.image} alt={product.name} fluid />
-            </Row>
-          ))}
-        </Col>
-
-        <Col>
-          <ProductDetail product="2" />
-        </Col>
-        {/* 
-        1. click image
-        2. find image _id
-        3. render product detail by _id
-
-
-        */}
-        <Col md={1}>
-          <Image src={post.image} alt={post.name} fluid />
-        </Col>
         <Col md={5}>
-          <Image src={post.image} alt={post.name} fluid />
+          <Image src={product.image} alt={product.name} fluid />
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h3>{post.name}</h3>
+              <h3>{product.name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
-              {/* <Rating value={post.rating} text={`${post.numReviews} reviews`} /> */}
+              <Rating
+                value={product.rating}
+                text={`${product.numReviews} reviews`}
+              />
             </ListGroup.Item>
-            <ListGroup.Item>Price: ${post.price}</ListGroup.Item>
-            <ListGroup.Item>Description: {post.description}</ListGroup.Item>
+            <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+            <ListGroup.Item>Description: {product.description}</ListGroup.Item>
           </ListGroup>
         </Col>
         <Col md={3}>
@@ -112,4 +95,4 @@ const PostScreen = ({ match }) => {
   );
 };
 
-export default PostScreen;
+export default ProductScreen;

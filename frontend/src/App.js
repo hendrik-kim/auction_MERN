@@ -1,12 +1,12 @@
-import Header from './components/Header';
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Footer from './components/Footer';
 import { Container } from 'react-bootstrap';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
-import PostScreen from './screens/PostScreen';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Header />
@@ -14,12 +14,11 @@ function App() {
         <Container>
           <Route path="/" component={HomeScreen} exact />
           <Route path="/product/:id" component={ProductScreen} />
-          <Route path="/post/:id" component={PostScreen} />
         </Container>
       </main>
       <Footer />
     </Router>
   );
-}
+};
 
 export default App;

@@ -1,14 +1,4 @@
-import mongoose from 'mongoose';
-const reviewSchema = mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    rating: { type: Number, required: true },
-    comment: { type: String, required: true },
-  },
-  {
-    timestamps: true,
-  }
-);
+import mongoose from 'mongoose'
 
 const userSchema = mongoose.Schema(
   {
@@ -20,22 +10,6 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-    },
-    kakaoId: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    reviews: [reviewSchema],
-    rating: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-    numReviews: {
-      type: Number,
-      required: true,
-      default: 0,
     },
     password: {
       type: String,
@@ -50,8 +24,8 @@ const userSchema = mongoose.Schema(
   {
     timestamps: true,
   }
-);
+)
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema)
 
-export default User;
+export default User
