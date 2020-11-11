@@ -23,8 +23,27 @@ const ProductScreen = ({ match }) => {
         Go Back
       </Link>
       <Row>
+        {/* <Col md={1}>
+          <Row className="mb-3">
+            <Image src={product.image} alt={product.name} fluid />
+          </Row>
+          <Row className="mb-3">
+            <Image src={product.image} alt={product.name} fluid />
+          </Row>
+        </Col> */}
         <Col md={5}>
           <Image src={product.image} alt={product.name} fluid />
+          <Row className="my-3">
+            <Col>
+              <Image src={product.image} alt={product.name} fluid />
+            </Col>
+            <Col>
+              <Image src={product.image} alt={product.name} fluid />
+            </Col>
+            <Col>
+              <Image src={product.image} alt={product.name} fluid />
+            </Col>
+          </Row>
         </Col>
         <Col md={3}>
           <ListGroup variant="flush">
