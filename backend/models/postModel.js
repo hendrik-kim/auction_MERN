@@ -13,14 +13,26 @@ const postSchema = mongoose.Schema(
         qty: { type: Number, required: false },
         image: { type: String, required: false },
         price: { type: Number, required: false },
+        brand: {
+          type: String,
+          required: false,
+        },
+        category: {
+          type: String,
+          required: false,
+        },
+        description: {
+          type: String,
+          required: false,
+        },
+        countInStock: {
+          type: Number,
+          required: false,
+          default: 0,
+        },
         product: {
-          // name: { type: String, required: true },
-          // qty: { type: Number, required: true },
-          // image: { type: String, required: true },
-          // price: { type: Number, required: true },
-          // product: {
           type: mongoose.Schema.Types.ObjectId,
-          // required: true,
+          required: false,
           ref: 'Product',
         },
       },

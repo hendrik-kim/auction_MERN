@@ -1,4 +1,7 @@
 import {
+  POST_DEFAULT_ITEM_REQUEST,
+  POST_DEFAULT_ITEM_FAIL,
+  POST_DEFAULT_ITEM_SUCCESS,
   POST_LIST_REQUEST,
   POST_LIST_SUCCESS,
   POST_LIST_FAIL,
@@ -30,6 +33,19 @@ export const postDetailsReducer = (
     case POST_DETAILS_SUCCESS:
       return { loading: false, post: action.payload };
     case POST_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const postDefaultItemReducer = (state = { defaultItem: {} }, action) => {
+  switch (action.type) {
+    case POST_DEFAULT_ITEM_REQUEST:
+      return { loading: true, ...state };
+    case POST_DEFAULT_ITEM_SUCCESS:
+      return { loading: false, defaultItem: action.payload };
+    case POST_DEFAULT_ITEM_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

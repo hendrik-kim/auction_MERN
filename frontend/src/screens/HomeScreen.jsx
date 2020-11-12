@@ -34,7 +34,7 @@ const HomeScreen = () => {
       ) : (
         <Row>
           {posts.map((post) => (
-            <Col key={post._id}>
+            <Col key={post._id} sm={12} md={6} lg={4} xl={3}>
               <Post post={post} />
             </Col>
           ))}
