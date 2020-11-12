@@ -1,11 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Card, Col, Image, ListGroup, Row, Button } from 'react-bootstrap';
-import Rating from './Rating';
 
-const Product = ({ product }) => {
+const Product = ({ product, history, match }) => {
   const addToBasketHandler = () => {
-    // history.push(`/wishlist/${match.params.id}?qty=${qty}`);
+    history.push(`/wishlist/${match.params.id}/${product._id}`);
   };
 
   return (
@@ -18,12 +17,6 @@ const Product = ({ product }) => {
           <ListGroup.Item>
             <h3>{product.name}</h3>
           </ListGroup.Item>
-          {/* <ListGroup.Item>
-      <Rating
-        value={post.rating}
-        text={`${post.numReviews} reviews`}
-      />
-    </ListGroup.Item> */}
           <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
           <ListGroup.Item>Description: {product.description}</ListGroup.Item>
         </ListGroup>
@@ -39,16 +32,6 @@ const Product = ({ product }) => {
                 </Col>
               </Row>
             </ListGroup.Item>
-            {/* {product.countInStock > 0 ? (
-              <ListGroup.Item>
-                <Row>
-                  <Col>Qty:</Col>
-                  <Col>{product.countInStock}</Col>
-                </Row>
-              </ListGroup.Item>
-            ) : (
-              ''
-            )} */}
             <ListGroup.Item>
               <Row>
                 <Col>Status:</Col>
@@ -57,26 +40,6 @@ const Product = ({ product }) => {
                 </Col>
               </Row>
             </ListGroup.Item>
-            {/* {product.countInStock > 0 && (
-              <ListGroup.Item>
-                <Row>
-                  <Col>Qty</Col>
-                  <Col>
-                    <Form.Control
-                      as="select"
-                      value={qty}
-                      onChange={(e) => setQty(e.target.value)}
-                    >
-                      {[...Array(product.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-            )} */}
             <ListGroup.Item>
               <Button
                 onClick={addToBasketHandler}

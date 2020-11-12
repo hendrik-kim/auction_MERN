@@ -9,3 +9,12 @@ h3 {
 .rating span {
   margin: 0.1rem;
 }
+
+a {
+  text-decoration: none !important;
+  color: #000;
+}
+
+a:hover {
+  color: #000;
+}
